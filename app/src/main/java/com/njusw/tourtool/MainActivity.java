@@ -9,30 +9,37 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.njusw.tourtool.adapter.ViewPagerAdapter;
+import com.njusw.tourtool.ui.BaseActivity;
 import com.njusw.tourtool.ui.TestFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
-    private BottomNavigationView btmNavi;
-    private ViewPager viewPager;
+public class MainActivity extends BaseActivity {
+
+    @BindView(R.id.bottomNavigationView)
+    public BottomNavigationView btmNavi;
+    @BindView(R.id.main_vp)
+    public ViewPager viewPager;
     private ViewPagerAdapter viewPagerAdapter;
     private MenuItem menuItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        initView();
+        //setContentView()工作在baseActivity中完成，必须在ButterKnife.bind()之前完成
+        ButterKnife.bind(this);
+        initView(savedInstanceState);
     }
 
-    private void initView() {
-        btmNavi = findViewById(R.id.bottomNavigationView);
+    @Override
+    protected void initView(Bundle savedInstanceState) {
+        //btmNavi = findViewById(R.id.bottomNavigationView);
+        //viewPager = findViewById(R.id.main_vp);
         btmNavi.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
-        viewPager = findViewById(R.id.main_vp);
         viewPager.addOnPageChangeListener(mOnPageChangeListener);
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(viewPagerAdapter);
@@ -42,6 +49,11 @@ public class MainActivity extends AppCompatActivity {
         list.add(TestFragment.newInstance("消息"));
         list.add(TestFragment.newInstance("个人"));
         viewPagerAdapter.setList(list);
+    }
+
+    @Override
+    protected int getContentViewResId() {
+        return R.layout.activity_main;
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
