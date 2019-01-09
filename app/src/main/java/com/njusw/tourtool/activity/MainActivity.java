@@ -1,14 +1,16 @@
-package com.njusw.tourtool;
+package com.njusw.tourtool.activity;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.Window;
 
+import com.njusw.tourtool.R;
 import com.njusw.tourtool.adapter.ViewPagerAdapter;
-import com.njusw.tourtool.ui.BaseActivity;
+
 import com.njusw.tourtool.ui.MainFragment;
 import com.njusw.tourtool.ui.TestFragment;
 
@@ -28,9 +30,15 @@ public class MainActivity extends BaseActivity {
     private MenuItem menuItem;
 
     @Override
+    protected void initUI() {
+
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView()工作在baseActivity中完成，必须在ButterKnife.bind()之前完成
+
         ButterKnife.bind(this);
         initView(savedInstanceState);
     }
