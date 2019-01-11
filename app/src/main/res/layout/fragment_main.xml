@@ -11,6 +11,12 @@
         android:id="@+id/btn_test_get"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="GET请求"/>
+        android:text="测试GET请求"/>
+
+    <Button
+        android:id="@+id/btn_test_addplace"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="测试自定义出游地点"/>
 
 </LinearLayout>

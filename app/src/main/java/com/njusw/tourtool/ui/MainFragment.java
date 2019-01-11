@@ -80,4 +80,9 @@ public class MainFragment extends Fragment {
     public void onClick() {
         Toast.makeText(getActivity(), "测试ButterKnife", Toast.LENGTH_SHORT ).show();
     }
+
+    @OnClick(R.id.btn_test_addplace)
+    public void onClick_add() {
+        Toast.makeText(getActivity(), "测试自定义出游地点", Toast.LENGTH_SHORT ).show();
+    }
 }

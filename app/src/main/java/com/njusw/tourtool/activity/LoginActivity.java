@@ -34,9 +34,15 @@ public class LoginActivity extends BaseActivity {
         RResult rResult=(RResult) msg.obj;
         if (rResult.getSuccess().equals("yes")) {
 
+            tip("登录成功");
             ActivityUtil.start(this, MainActivity.class, true);
-        }else {
+
+        }else if(rResult.getSuccess().equals("no")) {
             tip("登录失败:"+rResult.getErrMsg());
+            ActivityUtil.start(this, MainActivity.class, true);
+        }else{
+            tip("请求失败");
+            ActivityUtil.start(this, MainActivity.class, true);
         }
     }
 

@@ -41,26 +41,18 @@ public class UserController extends BaseController {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-		String jsonStr = NetworkUtil.doPost(url, params);
+		try{
 
-//		HttpRequest.postFormRequest(url,params, new HttpRequest.DataCallBack() {
-//			@Override
-//			public void requestSuccess(String result) throws Exception {
-//				Toast.makeText(getActivity(),result,Toast.LENGTH_SHORT).show();
-//				Log.d("登陆", result);
-//
-//
-//			}
-//
-//			@Override
-//			public void requestFailure(Request request, IOException e) {
-//				Toast.makeText(getActivity(),"请求失败",Toast.LENGTH_SHORT).show();
-//
-//			}
-//		});
-
-		RResult res= JSON.parseObject(jsonStr, RResult.class);
+			String jsonStr = NetworkUtil.doPost(url, params);
+			RResult res= JSON.parseObject(jsonStr, RResult.class);
+			return res;
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		RResult res = new RResult();
+		res.setSuccess("err");
 		return res;
+
 	}
 
 }

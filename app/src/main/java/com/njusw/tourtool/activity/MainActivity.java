@@ -11,7 +11,12 @@ import android.view.Window;
 import com.njusw.tourtool.R;
 import com.njusw.tourtool.adapter.ViewPagerAdapter;
 
+import com.njusw.tourtool.ui.DateFragment;
+
+import com.njusw.tourtool.ui.InterfaceTestFragment;
 import com.njusw.tourtool.ui.MainFragment;
+import com.njusw.tourtool.ui.MeFragment;
+import com.njusw.tourtool.ui.MessageFragment;
 import com.njusw.tourtool.ui.TestFragment;
 
 import java.util.ArrayList;
@@ -53,9 +58,9 @@ public class MainActivity extends BaseActivity {
         viewPager.setAdapter(viewPagerAdapter);
         List<Fragment> list = new ArrayList<>();
         list.add(new MainFragment());
-        list.add(TestFragment.newInstance("约伴"));
-        list.add(TestFragment.newInstance("消息"));
-        list.add(TestFragment.newInstance("个人"));
+        list.add(new DateFragment());
+        list.add(new MessageFragment());
+        list.add(new InterfaceTestFragment());
         viewPagerAdapter.setList(list);
     }
 
