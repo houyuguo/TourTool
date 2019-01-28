@@ -13,7 +13,6 @@ import com.njusw.tourtool.adapter.ViewPagerAdapter;
 
 import com.njusw.tourtool.ui.DateFragment;
 
-import com.njusw.tourtool.ui.InterfaceTestFragment;
 import com.njusw.tourtool.ui.MainFragment;
 import com.njusw.tourtool.ui.MeFragment;
 import com.njusw.tourtool.ui.MessageFragment;
@@ -60,7 +59,7 @@ public class MainActivity extends BaseActivity {
         list.add(new MainFragment());
         list.add(new DateFragment());
         list.add(new MessageFragment());
-        list.add(new InterfaceTestFragment());
+        list.add(new MeFragment());
         viewPagerAdapter.setList(list);
     }
 

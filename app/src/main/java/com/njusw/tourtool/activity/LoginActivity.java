@@ -32,18 +32,19 @@ public class LoginActivity extends BaseActivity {
 
     private void handleLoginResult(Message msg) {
         RResult rResult=(RResult) msg.obj;
-        if (rResult.getSuccess().equals("yes")) {
 
-            tip("登录成功");
-            ActivityUtil.start(this, MainActivity.class, true);
+            if (rResult.getSuccess().equals("ok")) {
 
-        }else if(rResult.getSuccess().equals("no")) {
-            tip("登录失败:"+rResult.getErrMsg());
-            ActivityUtil.start(this, MainActivity.class, true);
-        }else{
-            tip("请求失败");
-            ActivityUtil.start(this, MainActivity.class, true);
-        }
+                tip("登录成功");
+                ActivityUtil.start(this, MainActivity.class, true);
+
+            } else if (rResult.getSuccess().equals("no")) {
+                tip("登录失败:" + rResult.getErrMsg());
+                ActivityUtil.start(this, MainActivity.class, true);
+            } else {
+                tip("请求失败");
+                ActivityUtil.start(this, MainActivity.class, true);
+            }
     }
 
     @Override

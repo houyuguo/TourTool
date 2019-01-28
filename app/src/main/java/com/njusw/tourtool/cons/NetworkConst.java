@@ -6,7 +6,8 @@ public class NetworkConst {
     //192.168.0.112:8080/TeamApp/user/login
 
 //    public static final String BASE_URL="http://mall.520it.com";
-    public static final String BASE_URL="http://172.19.240.146:8080/TeamApp/user";
+//    public static final String BASE_URL="http://172.19.240.146:8080/TeamApp/user";
+    public static final String BASE_URL="http://192.168.0.105:8080/TeamApp/user";
 
     public static final String LOGIN_URL=BASE_URL+"/login";
 

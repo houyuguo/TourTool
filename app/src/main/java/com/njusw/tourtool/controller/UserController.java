@@ -21,6 +21,10 @@ public class UserController extends BaseController {
 				// 登录的请求 doPost doGet
 				RResult rResult = loginOrRegist(NetworkConst.LOGIN_URL,
 						(String) values[0], (String) values[1]);
+				if(rResult == null){
+					rResult = new RResult();
+					rResult.setSuccess("err");
+				}
 				// 跟Activity说 数据加载完毕了
 				mListener.onModeChanged(IdiyMessage.LOGIN_ACTION_RESULT, rResult);
 				break;
@@ -38,10 +42,6 @@ public class UserController extends BaseController {
 		try {
 			params.put("username", URLEncoder.encode(name, "UTF-8"));
 			params.put("password",pwd);
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-		try{
 
 			String jsonStr = NetworkUtil.doPost(url, params);
 			RResult res= JSON.parseObject(jsonStr, RResult.class);

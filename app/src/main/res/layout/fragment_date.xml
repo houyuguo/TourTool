@@ -7,10 +7,71 @@
     android:orientation="vertical">
 
     <!-- TODO: Update blank fragment layout -->
+
     <Button
-        android:id="@+id/btn_test_issue"
+        android:id="@+id/btn_test_addplace"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="测试新增出游地点"/>
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:text="测试"/>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_query_myplace"
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="我的出游地点" />
+        <Button
+            android:id="@+id/btn_addplace"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="添加" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal" >
+        <Button
+            android:id="@+id/btn_query_myissue"
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="我的出游发布" />
+
+        <Button
+            android:id="@+id/btn_test_issue"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="新增" />
+
+    </LinearLayout>
+
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:stretchColumns="1" >
+        <ListView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/h_list_view"
+            android:divider="#00000000"
+            android:dividerHeight="18dp"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
+    </TableLayout>
 
 </LinearLayout>

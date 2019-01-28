@@ -3,7 +3,7 @@
           xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+
 
     <application
         android:allowBackup="true"
@@ -14,6 +14,15 @@
         android:theme="@style/AppTheme"
         tools:replace="android:appComponentFactory"
         android:appComponentFactory="android.support.v4.app.CoreComponentFactory">
+
+        <meta-data android:name="com.baidu.lbsapi.API_KEY"
+            android:value="p98hk8SOIrkyqblZLRyC7jW7V4kpW4f3"/>
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote"></service>
+
         <activity android:name="com.njusw.tourtool.activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -29,5 +38,65 @@
         <activity android:name=".activity.RegistActivity">
         </activity>
 
+        <activity android:name=".activity.AddPlaceActivity">
+        </activity>
+
+        <activity android:name=".activity.AddTourActivity">
+        </activity>
+
+        <activity android:name=".activity.MapActivity">
+        </activity>
+
+        <activity android:name=".activity.MyMapActivity">
+        </activity>
+
+        <activity android:name=".activity.MyInfoActivity">
+        </activity>
+
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <!--<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />-->
+    <!--<uses-permission android:name="android.permission.INTERNET" />-->
+    <!--<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />-->
+    <!--<uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />-->
+    <!--<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />-->
+    <!--<uses-permission android:name="android.permission.WRITE_SETTINGS" />-->
+    <!--<uses-permission android:name="android.permission.READ_PHONE_STATE" />-->
+    <!--<uses-permission android:name="android.permission.CALL_PHONE" />-->
+    <!--<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />-->
+    <!--<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />-->
+
+
+    //获取设备网络状态，禁用后无法获取网络状态
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    //网络权限，当禁用后，无法进行检索等相关业务
+    <uses-permission android:name="android.permission.INTERNET" />
+    //读取设备硬件信息，统计数据
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    //读取系统信息，包含系统版本等信息，用作统计
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    //获取设备的网络状态，鉴权所需网络代理
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    //允许sd卡写权限，需写入地图数据，禁用后无法显示地图
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    //允许sd卡读权限，需读取地图数据，禁用后无法显示地图
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    //获取统计数据
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    //鉴权所需该权限获取进程列表
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    //使用步行AR导航，配置Camera权限
+    <uses-permission android:name="android.permission.CAMERA" />
+    //网络定位
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    //GPS定位
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位-->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+
+
+
+
 </manifest>

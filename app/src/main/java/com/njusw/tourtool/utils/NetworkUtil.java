@@ -10,6 +10,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 
 public class NetworkUtil {
@@ -31,57 +32,28 @@ public class NetworkUtil {
     }
 
     public static String doPost(String urlPath,HashMap<String, String> params){
-//        try {
-//            URL url=new URL(urlPath);
-//            HttpURLConnection conn=(HttpURLConnection) url.openConnection();
-//            conn.setRequestMethod("POST");
-//
-//            String paramStr="";//数据 从params来
-//            Set<HashMap.Entry<String, String>> entrySet = params.entrySet();
-//            for (HashMap.Entry<String, String> entry : entrySet) {
-//                paramStr+=("&"+entry.getKey()+"="+entry.getValue());
-//            }
-//            //name=xxx&pwd=dsaad
-//            paramStr = paramStr.substring(1);
-//
-//            conn.setDoOutput(true);
-//            conn.getOutputStream().write(paramStr.getBytes());
-//            if (conn.getResponseCode()==200) {
-//                InputStream is = conn.getInputStream();
-//                BufferedReader buf=new BufferedReader(new InputStreamReader(is));
-//                return buf.readLine();
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-        byte[] data = getRequestData(params, "utf-8").toString().getBytes();//获得请求体
         try {
+            URL url=new URL(urlPath);
+            HttpURLConnection conn=(HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("POST");
 
-            URL url = new URL(urlPath);
+            String paramStr="";//数据 从params来
+            Set<HashMap.Entry<String, String>> entrySet = params.entrySet();
+            for (HashMap.Entry<String, String> entry : entrySet) {
+                paramStr+=("&"+entry.getKey()+"="+entry.getValue());
+            }
 
-            HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
-            httpURLConnection.setConnectTimeout(3000);     //设置连接超时时间
-            httpURLConnection.setDoInput(true);                  //打开输入流，以便从服务器获取数据
-            httpURLConnection.setDoOutput(true);                 //打开输出流，以便向服务器提交数据
-            httpURLConnection.setRequestMethod("POST");     //设置以Post方式提交数据
-            httpURLConnection.setUseCaches(false);               //使用Post方式不能使用缓存
-            //设置请求体的类型是文本类型
-            httpURLConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-            //设置请求体的长度
-            httpURLConnection.setRequestProperty("Content-Length", String.valueOf(data.length));
-            //获得输出流，向服务器写入数据
-            OutputStream outputStream = httpURLConnection.getOutputStream();
-            outputStream.write(data);
+            paramStr = paramStr.substring(1);
 
-            int response = httpURLConnection.getResponseCode();            //获得服务器的响应码
-            if(response == HttpURLConnection.HTTP_OK) {
-                InputStream is = httpURLConnection.getInputStream();
+            conn.setDoOutput(true);
+            conn.getOutputStream().write(paramStr.getBytes());
+            if (conn.getResponseCode()==200) {
+                InputStream is = conn.getInputStream();
                 BufferedReader buf=new BufferedReader(new InputStreamReader(is));
-                return buf.readLine();                 //处理服务器的响应结果
+                return buf.readLine();
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return "err: " + e.getMessage().toString();
         }
         return "";
     }
